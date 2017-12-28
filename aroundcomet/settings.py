@@ -126,6 +126,5 @@ LOGIN_REDIRECT_URL = '/blank/main'
 
 
 STATICFILES_DIRS = [
-   # os.path.join('/home/v.mazurenko/aroundcomet/aroundcomet/bin/aroundcomet/static/'),
     os.path.join(BASE_DIR, "static"),
 ]
