@@ -1,0 +1,92 @@
+{% extends 'main.html' %}
+    {% block content %}
+   <body>
+
+    <div class="col-lg-8 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1" style="margin-top: 5vh; ">
+	    <div class="ser" style="margin-left: -80px;">
+	        <form method="get">
+	          	<ul class="searchform">
+		          	<div class="span1">
+		          		<div class="col-lg-3 col-md-2 col-sm-2">
+
+				            <li class="date">
+								<strong> {{ filter.form.date_creating.label }} </strong>
+								         {{ filter.form.date_creating }}
+				            </li>
+
+				            <li class="name">
+				             	<strong> {{ filter.form.name.label }} </strong>
+								{{ filter.form.name }}
+				            </li>
+
+				            <li class="surname">
+				            	<strong> {{ filter.form.surname.label }} </strong>
+								{{ filter.form.surname }}
+				            </li>
+
+				            <li class="address">
+				             	<strong> {{ filter.form.address.label }} </strong>
+								{{ filter.form.address }}
+				            </li>
+		            	</div>
+	            	</div>
+
+		            <div class="span2">
+			            <div class="col-lg-3 col-md-3 col-sm-2">
+				            <li class="manager">
+				              	<strong> {{ filter.form.manager.label }} </strong>
+								{{ filter.form.manager }}
+				            </li>
+
+				            <li class="status">
+								<strong> {{ filter.form.status.label }} </strong>
+								{{ filter.form.status }}
+
+				            </li>
+
+				            <li class="tarrif">
+							<strong> {{ filter.form.tarrif.label }} </strong>
+								{{ filter.form.tarrif }}
+
+				            </li>
+		            	</div>
+	            	</div>
+
+		            <div class="span3">
+			            <div class="col-lg-3 col-md-3 col-sm-2">
+				            <li class="dtm">
+						<strong> {{ filter.form.datetimerange.label }} </strong>
+								{{ filter.form.datetimerange }}
+
+				            </li>
+
+				        </div>
+				    </div>
+
+                    <div class="col-lg-12 col-md-8 col-sm-6">
+					    <div class="span4">
+					    	{% for value in filter.qs %}
+							<p>
+
+								<a href="{{ value.get_absolute_url }}" >{{value.name}}</a>
+
+					    	</p>
+							{% endfor %}
+					    </div>
+
+					    <div class="span5">
+						    <li>
+					        	<button type="submit" class="btn btn-info">
+									<span class="glyphicon glyphicon-search"></span> Search
+								</button>
+					        </li>
+				        </div>
+			        </div>
+
+	        	</ul>
+	        </form>
+	    </div>
+	</div>
+
+</body>
+    {% endblock %}

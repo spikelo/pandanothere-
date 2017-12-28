@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+	<html>
+
+	<head>
+{% load static %}
+
+
+	    <meta charset="utf-8">
+
+	    <title>Контакт</title>
+
+     <link rel="stylesheet" type="text/css" href="{% static 'startup/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'startup/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'startup/css/bootstrap-theme.css' %}">
+
+	</head>
+
+	<body class="body2">
+	{% block content %}
+	<div class="row">
+	    <div class="col-lg-4 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 " style="text-align: center; margin-top:3vh">
+	      <div class="reg">
+		<form  class="contact_form" action="" method="post" name="contact_form">
+					{% csrf_token %}
+
+	    		  <ul class="regform">
+		    <li class="name">
+                    {% if form.name.errors %}
+                    <p><strong> <font color="#ca1c1a"> {{form.name.errors}} </font> </strong></p>
+                    {% endif %}
+                    {{form.name}}
+			</li>
+
+		    <li class="surname">
+				    {% if form.surname.errors %}
+                    <p><strong> <font color="#ca1c1a"> {{form.surname.errors}} </font> </strong></p>
+                    {% endif %}
+                    {{form.surname}}
+
+		    </li>
+
+		    <li class="patronymic">
+                    {% if form.patronymic.errors %}
+                    <p><strong> <font color="#ca1c1a"> {{form.patronymic.errors}} </font> </strong></p>
+                    {% endif %}
+                    {{form.patronymic}}
+			</li>
+
+		    <li class="address">
+                    {% if form.address.errors %}
+                    <p><strong> <font color="#ca1c1a"> {{form.address.errors}} </font> </strong></p>
+                    {% endif %}
+                    {{form.address}}
+			</li>
+
+		    <li class="home">
+                    {% if form.home.errors %}
+                    <p><strong> <font color="#ca1c1a"> {{form.home.errors}} </font> </strong></p>
+                    {% endif %}
+                    {{form.home}}
+			</li>
+
+		    <li class="flat">
+                    {% if form.flat.errors %}
+                    <p><strong> <font color="#ca1c1a"> {{form.flat.errors}} </font> </strong></p>
+                    {% endif %}
+                    {{form.flat}}
+		    </li>
+
+		    <li class="contact_number">
+                    {% if form.contact_number.errors %}
+                    <p><strong> <font color="#ca1c1a"> {{form.contact_number.errors}} </font> </strong></p>
+                    {% endif %}
+                    {{form.contact_number}}
+			</li>
+
+		    <li class="prefering_connection">
+				<p  align="center" > <strong> <font size="5"> Дата подключения </font></strong></p>
+                	{{form.prefering_connection}}
+		    </li>
+
+		    <li>
+		      <p align="center"> <strong> <font size="5"> Тарифный план </font></strong> </p>
+					{{form.tarrif}}
+		    </li>
+
+		    <li>
+               <p align="center"> <strong> <font size="5"> Статус заявки </font></strong> </p>
+               		{{form.status}}
+		    </li>
+
+		    <li>
+		      <button class="btn btn-info btn-md" type="submit" > Изменить </button>
+		    </li>
+		  </ul>
+		</form>
+	      </div>
+	    </div>
+	  </div>
+	{% endblock %}
+	</body>
+	</html>
