@@ -1,0 +1,6 @@
+config zone                                     
+        option name 'comnet'                    
+        list subnet '172.16.236.0/24'           
+        option input 'ACCEPT'                   
+        option output 'ACCEPT'                  
+        option forward 'ACCEPT'
