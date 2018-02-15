@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+
+	<meta charset="utf-8">
+	<title>Our Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'startup/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'startup/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'startup/css/bootstrap-theme.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'startup/css/bootstrap.min.css' %}">
+
+    <script src="{% static 'startup/js/jquery.min.js' %}"></script>
+    <script src="{% static 'startup/js/bootstrap.min.js' %}"></script>
+
+</head>
+<body>
+	<div class="row" style="margin-right: 0;"> ]
+        <div>
+
+        </div>
+	<div class="col-lg-12" style="background-color:black;">
+		<h1 align="center" style="margin-bottom: 60px; color: #4ddbff; ">Welcome</h1>
+		  		<div class='top'>
+						{% if user.is_authenticated %}
+	                	<h3 style="margin: 0 0 0 28.5%; color: #4ddbff;"> <p> {{user.get_username}}</h3>
+						{% endif %}
+
+					<!--<button type="button" onclick='location.href="{% url "logout"%}?next={{request.path}}"' class="btn btn-info  btn-md">Выход</button> -->
+
+
+				</div>
+	            <hr>
+	</div>
+        {% block sidebar %}
+  		<div class="col-lg-3 col-md-3 col-sm-4" style="margin-top:3vh">
+  			<div class="navigation">
+                <ul class="nav list-group">
+                    <li>
+                        <a class="list-group-item" href="{% url 'main' %}"><i class="icon-home icon-1x"></i>Главная страница</a>
+                    </li>
+
+                    <li>
+						<a class="list-group-item" href="{% url 'blank-create' %}"><i class="icon-home icon-1x"></i>Создать заявку</a>
+                    </li>
+                    <li>
+                        <a class="list-group-item" href="{% url 'statusopen' %}"><i class="icon-home icon-1x"></i>Открытые заявки</a>
+                    </li>
+                        <a class="list-group-item" href="{% url 'tes' %}"><i class="icon-home icon-1x"></i>Аренда оборудования</a>
+                    <li>
+                        <a class="list-group-item" href="{% url 'search' %}"><i class="icon-home icon-1x"></i>Поиск</a>
+                    </li>
+                    <li>
+                        <a class="list-group-item" href="{% url "logout"%}?next={{request.path}}"><i class="icon-home icon-1x"></i>Выход</a>
+
+                </li>
+                </ul>
+            </div>
+        </div>
+        {% endblock %}
+
+        {% block content %}
+        <div class="col-lg-9 pull-right col-md-9 col-sm-8" style="margin-top:3vh">
+        	<div class="wrapper">
+			{% for prof in profile_list %}
+				<li>
+					<a href="{{prof.get_absolute_url}}">{{prof.name}}</a>
+				</li>
+			{% endfor %}
+
+	        </div>
+
+
+	        <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top: 10px;">
+
+	  {% block pagination %}
+  {% if is_paginated %}
+      <div class="pagination">
+          <span class="page-links">
+              {% if page_obj.has_previous %}
+                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">назад</a>
+              {% endif %}
+              <span class="page-current">
+                  страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+              </span>
+              {% if page_obj.has_next %}
+                  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">далее</a>
+              {% endif %}
+          </span>
+      </div>
+  {% endif %}
+{% endblock %}
+
+
+
+	        </div>
+	      </div>
+	</div>
+    {% endblock %}
+
+
+</body>
+</html>

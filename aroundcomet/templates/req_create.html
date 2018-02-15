@@ -1,0 +1,134 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+	<body class="body2">
+	{% block content %}
+	<div class="row" >
+	    <div class="col-lg-7 col-md-12  col-sm-12 ">
+	      <div class="reg">
+		        <form class="form-horizontal" action="" method="post" name="contact_form">
+					 {% csrf_token %}
+
+
+					 {% if form.name.errors %}
+					<p><strong> <font color="#ca1c1a"> {{form.name.errors}} </font> </strong></p>
+					 {% endif %}
+
+					<div class="form-group">
+				      <label class="control-label col-sm-4" for="email"> Имя:</label>
+				      <div class="col-sm-7">
+				        {{form.name}}
+					  </div>
+					</div>
+
+
+
+					{% if form.surname.errors %}
+					<p><strong> <font color="#ca1c1a"> {{form.surname.errors}} </font> </strong></p>
+					 {% endif %}
+
+
+
+				    <div>
+				    <div class="form-group">
+				      <label class="control-label col-sm-4" for="email"> Фамилия:</label>
+				      <div class="col-sm-7">
+				        {{form.surname}}
+				      </div>
+					</div>
+
+					{% if form.patronymic.errors %}
+					<p><strong> <font color="#ca1c1a"> {{form.patronymic.errors}} </font> </strong></p>
+					 {% endif %}
+
+
+
+				    <div class="form-group">
+				      <label class="control-label col-sm-4" for="email"> Отчество:</label>
+				      <div class="col-sm-7">
+						{{form.patronymic}}
+				      </div>
+				    </div>
+
+					{% if form.address.errors %}
+					<p><strong> <font color="#ca1c1a"> {{form.address.errors}} </font> </strong></p>
+					 {% endif %}
+
+				    <div class="form-group">
+				      <label class="control-label col-sm-4" for="email"> Адресс:</label>
+				     	<div class="col-sm-7">
+						  {{form.address}}
+				      </div>
+					</div>
+
+
+					{% if form.home.errors %}
+					<p><strong> <font color="#ca1c1a"> {{form.home.errors}} </font> </strong></p>
+					{% endif %}
+
+				    <div class="form-group">
+				      <label class="control-label col-sm-4" for="email"> Дом:</label>
+				      <div class="col-sm-7">
+						  {{form.home}}
+				      </div>
+				    </div>
+
+					{% if form.flat.errors %}
+					<p><strong> <font color="#ca1c1a"> {{form.flat.errors}} </font> </strong></p>
+					 {% endif %}
+
+				    <div class="form-group">
+				      <label class="control-label col-sm-4" for="email"> Квартира:</label>
+				      <div class="col-sm-7">
+						  {{form.flat}}
+				      </div>
+				    </div>
+
+
+					{% if form.contact_number.errors %}
+					<p><strong> <font color="#ca1c1a"> {{form.contact_number.errors}} </font> </strong></p>
+					 {% endif %}
+				    <div class="form-group">
+				      <label class="control-label col-sm-4" for="email"> Контактный телефон:</label>
+				      <div class="col-sm-7">
+						  {{form.contact_number}}
+				      </div>
+				    </div>
+
+
+
+				    <div class="form-group">
+				      <label class="control-label col-sm-4" for="email"> Время подключения:</label>
+				      <div class="col-sm-7">
+							{{form.prefering_connection}}
+				      </div>
+				    </div>
+				    <div class="form-group">
+				      <label class="control-label col-sm-4" for="email"> Тарифный план:</label>
+				      <div class="col-sm-7">
+						  {{form.tarrif}}
+				      </div>
+				    </div>
+				    <div class="form-group">
+				      <label class="control-label col-sm-4" for="email"> Статус заявки:</label>
+				      <div class="col-sm-7">
+						  {{form.status}}
+					  </div>
+
+				      </div>
+				    </div>
+				    <div class="form-group">
+				      <div class="col-sm-offset-6 col-sm-7">
+				        <button type="submit" class="btn btn-info btn-md">Зарегистрировать</button>
+				      </div>
+				    </div>
+				</form>
+	      </div>
+	    </div>
+	  </div>
+	{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+{% block content %}
+
+    <div class="red">
+        <div class="col-lg-6  col-md-5 col-sm-4" style="margin-top:3vh">
+            <ul>
+                <li>
+                    <p><strong>Имя :</strong> {{profile.name}}</p>
+                    <p><strong>Фамилия:</strong> {{profile.surname}}</p>
+                    <p><strong>Отвчество:</strong> {{profile.patronymic}} </p>
+                    <p><strong>Адрес:</strong> {{profile.address}} </p>
+                    <p><strong>Дом:</strong> {{profile.home}}</p>
+                    <p><strong>Квартира:</strong>{{profile.flat}}</p>
+
+                    <p><strong>Менеджер :</strong> {{profile.manager}}</p>
+                    <p><strong>Контактный номер </strong> : {{profile.contact_number}} </p>
+                    <p><strong>Тарифный план  </strong> : {{profile.tarrif}} </p>
+
+
+                    {% if profile.status == 'Закрыта' %}
+                    <p style="color: red ;"><strong>Статус : {{profile.status}} </strong></p>
+                    {% elif profile.status == 'Открыта' %}
+                    <p style="color: green ;"><strong>Статус : {{profile.status}} </strong></p>
+                    {% endif %}
+                    <button class="btn" type="button" onclick='location.href="{{profile.get_edit_url}}"' > Редактировать</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+{% endblock %}
+</html>
